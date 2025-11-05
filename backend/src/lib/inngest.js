@@ -2,7 +2,7 @@ import {Inngest} from "inngest";
 import User from "../models/User.model.js"
 import { connectDb } from "./database.js";
 
-export const inngest= new Inngest({id:talent-search});
+export const inngest= new Inngest({id:"talent-search"});
 
 
 const syncUser = inngest.createFunction(
