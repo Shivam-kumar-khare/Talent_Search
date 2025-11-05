@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <header>
-
+        <h1>Welcome to Talent Search</h1>
         <SignedOut>
           <SignInButton mode='modal'>SignIn To TalentIQ</SignInButton>
         </SignedOut>

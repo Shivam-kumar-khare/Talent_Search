@@ -2,13 +2,23 @@ import express from "express"
 import { ENV } from "./lib/env.js";
 import path from "path"
 import { connectDb } from "./lib/database.js";
-import cors from "cors"
+import cors from "cors";
+import { inngest,functions } from "./lib/inngest.js";
 
 
 
 const app = express();
 app.use(express.json());
 app.use(cors({origin:ENV.CLIENT_URL,credentials:true}));
+
+// Set up the "/api/inngest" (recommended) routes with the serve handler
+app.use("/api/inngest", serve({ client: inngest, functions }))
+
+
+
+
+
+
 
 const __dirname = path.resolve();
 
