@@ -5,11 +5,15 @@ import { connectDb } from "./lib/database.js";
 import cors from "cors";
 import { inngest,functions } from "./lib/inngest.js";
 import {serve} from "inngest/express"
+import {clerkMiddleware} from "@clerk/express"
+import { authMiddleware } from "./middlewares/auth.middleware.js";
+import chatRouter from "./routes/chat.routes.js"
 
 const app = express();
 app.use(express.json());
-app.use(cors({origin:ENV.CLIENT_URL,credentials:true}));
 
+app.use(cors({origin:ENV.CLIENT_URL,credentials:true}));
+app.use(clerkMiddleware());
 // Set up the "/api/inngest" (recommended) routes with the serve handler
 app.use("/api/inngest", serve({ client: inngest, functions }))
 
@@ -27,9 +31,11 @@ app.get("/health", (req, res) => {
 })
 
 
-app.get("/books", (req, res) => {
-    res.status(200).json({ status: "200", message: "this is a book endpoint" });
+app.get("/video-calls", authMiddleware,(req, res) => {
+    res.status(200).json({ status: "200", message: "this is a video call  endpoint" });
 })
+
+
 if (ENV.NODE_ENV == "production") {
     console.log("In Production")
     app.use(express.static(path.join(__dirname, "../frontend/dist")));
@@ -45,7 +51,7 @@ const startServer = async () => {
    try {
      await connectDb();
      app.listen(ENV.PORT, () => {
-         console.log("server is running at port : ", ENV.PORT)
+         console.log(`server is running at port : http://localhost:${ENV.PORT}`)
      })
    } catch (error) {
     console.log("Error starting server\n",error)
