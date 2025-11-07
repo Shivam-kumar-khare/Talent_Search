@@ -1,34 +1,38 @@
 import { StreamChat } from "stream-chat";
+import { StreamClient } from "@stream-io/node-sdk";
 
 import { ENV } from "./env.js";
 
-const apikey=ENV.STREAM_API_KEY;
-const apiSecret=ENV.STREAM_API_SECRET;
+const apikey = ENV.STREAM_API_KEY;
+const apiSecret = ENV.STREAM_API_SECRET;
 
-if(!(apiSecret&&apikey)){console.error("STREAM API KEY OR STREAM API SECRET NOT FOUND")};
+if (!(apiSecret && apikey)) { console.error("STREAM API KEY OR STREAM API SECRET NOT FOUND") };
 
-export const chatClient=StreamChat.getInstance(apikey,apiSecret);
+const chatClient = StreamChat.getInstance(apikey, apiSecret);
+const streamClient = new StreamClient.getInstance(apikey, apiSecret)
 
 
-const upsertStreamUser=async (userData)=>{
+const upsertStreamUser = async (userData) => {
     try {
         await chatClient.upsertUser(userData);
-        console.log("Upsert user successful",userData);
+        console.log("Upsert user successful", userData);
     } catch (error) {
         console.error("Error upserting Users");
     }
 }
 
-const deleteStreamUser=async (id)=>{
+const deleteStreamUser = async (id) => {
     try {
         await chatClient.deleteUser(id)
-        console.log("User Deleted Succcessfully:",id)
+        console.log("User Deleted Succcessfully:", id)
     } catch (error) {
-        console.error("Error deleting stream user:",error);
+        console.error("Error deleting stream user:", error);
     }
 }
 
 export {
+    chatClient,
+    streamClient,
     deleteStreamUser,
     upsertStreamUser,
 }

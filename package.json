@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Shivam-kumar-khare/Talent_Search#readme",
   "dependencies": {
+    "@stream-io/node-sdk": "^0.7.17",
     "stream-chat": "^9.24.0"
   }
 }

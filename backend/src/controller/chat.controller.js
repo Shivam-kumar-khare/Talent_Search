@@ -2,7 +2,7 @@ import { chatClient } from "../lib/stream.lib.js"
 
 export const getStreamToken=async (req,res)=>{
     try {
-        //we need to use cleark id not mongodb _id as we saved user by cleark id in stream
+        //we need to use clerk id not mongodb _id as we saved user by clerk id in stream
         const token=chatClient.createToken(req.user.clerkId);
         const data={
             token,
