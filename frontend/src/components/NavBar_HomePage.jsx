@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import { SparklesIcon ,ArrowRightIcon,LogOutIcon} from "lucide-react";
-import { SignInButton,SignOutButton,SignedIn,SignedOut } from "@clerk/clerk-react";
+import { SparklesIcon ,ArrowRightIcon} from "lucide-react";
+import { SignInButton,SignedOut } from "@clerk/clerk-react";
 function NavBar() {
     return (
         <nav className="bg-base-100/80 backdrop-blur-md border-b border-primary/20 sticky top-0 z-50 shadow-lg">

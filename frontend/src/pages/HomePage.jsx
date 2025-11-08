@@ -10,7 +10,7 @@ import {
     LogOutIcon
 } from "lucide-react";
 import { Link } from 'react-router';
-import { NavBar } from "../components";
+import { NavBar_HomePage ,NavBar} from "../components";
 
 function HomePage() {
 
@@ -19,7 +19,8 @@ function HomePage() {
         <>
             <div className='mx-2 bg-gradient-to-br from-base-100 via-base-200 to-base-300 '>
                 {/*NavBar*/}
-               <NavBar/>
+               <NavBar_HomePage/>
+              
 
                 {/* HERO SECTION */}
                 <div className="max-w-7xl mx-auto px-4 py-20">

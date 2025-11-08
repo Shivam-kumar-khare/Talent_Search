@@ -1,5 +1,5 @@
 import { useUser } from '@clerk/clerk-react';
-import { HomePage, AboutPage, ProblemPage, DashboardPage } from './pages';
+import { HomePage, AboutPage, ProblemsPage, DashboardPage } from './pages';
 import { Navigate, Route, Routes } from 'react-router';
 
 
@@ -14,7 +14,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={!isSignedIn ? <HomePage /> : <Navigate to={"/dashboard"} />} />
-        <Route path='/problems' element={isSignedIn ? <ProblemPage /> : <Navigate to={"/"} />} />
+        <Route path='/problems' element={isSignedIn ? <ProblemsPage /> : <Navigate to={"/"} />} />
         <Route path='/dashboard' element={isSignedIn ? <DashboardPage /> : <Navigate to={"/"}/>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
