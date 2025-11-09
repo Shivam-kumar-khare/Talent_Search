@@ -4,6 +4,6 @@ import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 const router=Router();
 
-router.route("/token",authMiddleware,getStreamToken)
+router.get("/token",authMiddleware,getStreamToken)
 
 export default router;
