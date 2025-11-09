@@ -1,7 +1,7 @@
 import { Code2Icon, ChevronRightIcon } from "lucide-react";
 import { Link } from "react-router";
 
-const getDifficultyBadgeClass = (difficulty = "") => {
+export const getDifficultyBadgeClass = (difficulty = "") => {
     switch (difficulty.toLowerCase()) {
         case "easy":
             return "badge-success";
